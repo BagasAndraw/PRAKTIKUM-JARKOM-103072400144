@@ -8,7 +8,7 @@
 
 Repositori ini berisi kumpulan laporan dan dokumentasi dari kegiatan Praktikum Jaringan Komputer yang dikerjakan selama perkuliahan. Setiap modul praktikum didokumentasikan dalam bentuk laporan yang menjelaskan proses pengerjaan, hasil pengamatan, serta analisis terhadap aktivitas jaringan yang diamati selama praktikum berlangsung.
 
-  Melalui repositori ini, seluruh hasil praktikum disusun secara terstruktur berdasarkan modul yang dipelajari. Materi praktikum mencakup berbagai topik penting dalam jaringan komputer, seperti analisis protokol jaringan menggunakan **Wireshark**, pemahaman komunikasi data antar perangkat, serta implementasi aplikasi jaringan sederhana menggunakan **socket programming dengan Python**.
+Melalui repositori ini, seluruh hasil praktikum disusun secara terstruktur berdasarkan modul yang dipelajari. Materi praktikum mencakup berbagai topik penting dalam jaringan komputer, seperti analisis protokol jaringan menggunakan Wireshark, pemahaman komunikasi data antar perangkat, serta implementasi aplikasi jaringan sederhana menggunakan socket programming dengan Python.
   
 ---
 
