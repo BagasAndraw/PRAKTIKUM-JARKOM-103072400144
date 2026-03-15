@@ -1,4 +1,4 @@
-# Modul 1 Instalasi Wireshark dan Pengenalan Tools #
+# Tugas Modul 1 & 2 Instalasi Wireshark dan Pengenalan Tools #
 ## Install Wireshark ##
  1. Kunjungi halaman website berikut https://www.wireshark.org/download.html
  2. Tampilan seperti ini, sesuaikan device kalian, lalu pilih yang installer, Tunggu download hingga selesai, lalu jalankan,
