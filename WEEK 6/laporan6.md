@@ -92,7 +92,42 @@ dalam file trace) untuk menjawab pertanyaan ini?
 8. Berapa banyak data yang biasanya diakui oleh penerima dalam ACK? Dapatkah anda 
 mengidentifikasi kasus-kasus di mana penerima melakukan ACK untuk setiap segmen yang 
 diterima? 
+![hasil](../assests/image/Week6(14).png)
+
+    Berdasarkan hasil pengamatan dengan filter tcp.stream eq 0, ACK mengakui data secara kumulatif. Sebagai contoh, segmen dengan sequence number 1 dan panjang data 565 byte diakui oleh ACK dengan nilai acknowledgment number 566. Selain itu, pada segmen dengan panjang 1460 byte, nilai ACK meningkat sebesar 1460 byte. Hal ini menunjukkan bahwa ACK dapat mengakui satu atau beberapa segmen sekaligus, sehingga tidak selalu dikirim untuk setiap segmen.
 
 9. Berapa throughput (byte yang ditransfer per satuan waktu) untuk sambungan TCP? 
 Jelaskan bagaimana Anda menghitung nilai ini.
+![hasil](../assests/image/Week6(15).png)
+
+    Throughput diperoleh menggunakan fitur TCP Stream Graph -> Throughput pada Wireshark. Dari grafik terlihat bahwa throughput berada pada kisaran sekitar 200–270 kbps selama proses transmisi. Nilai throughput dihitung sebagai jumlah data yang ditransfer dibagi dengan waktu transmisi. Grafik menunjukkan bahwa throughput relatif stabil selama koneksi berlangsung.
+
+## 6.5 Congestion Control pada TCP
+## Langkah Percobaan
+ 
+Pilih segmen TCP yang dikirim klien di jendela "daftar paket yang diambil" Wireshark. 
+Kemudian pilih menu: Statistics->TCP Stream Graph-> Time-Sequence-Graph(Stevens). 
+Anda akan melihat plot yang terlihat mirip dengan plot di bawah. Plot tersebut dibuat dari 
+paket yang ditangkap trace tcp-ethereal-trace-1 pada http://gaia.cs.umass.edu/wiresharklabs/wireshark-traces.zip 
+![hasil](../assests/image/Week6(16).png)
+
+## Uji Pengamatan
+1. Gunakan alat plotting Time-Sequence-Graph (Stevens) untuk melihat grafik nomor urut 
+berbanding waktu dari segmen yang dikirim oleh klien ke server gaia.cs.umass.edu. 
+Dapatkah Anda mengidentifikasi di mana fase “slow start” TCP dimulai dan berakhir, dan 
+pada bagian mana algoritma ”congestion avoidance” mengambil alih? Berikan komentar 
+tentang bagaimana data yang diukur berbeda dari perilaku ideal TCP yang telah kita pelajari.
+
+    Jawab :
+
+    Gambar dapat dilihat dari Langkah Percobaan, Berdasarkan grafik Time-Sequence (Stevens), fase slow start terjadi pada awal koneksi, yaitu sekitar 0 hingga ±1 detik, yang ditunjukkan oleh peningkatan sequence number yang semakin cepat. Setelah itu, grafik berubah menjadi lebih linear, menandakan bahwa TCP memasuki fase congestion avoidance, di mana pertambahan data berlangsung secara bertahap. Pola ini sesuai dengan teori TCP, meskipun pada hasil pengukuran terdapat sedikit variasi yang disebabkan oleh kondisi jaringan nyata seperti delay dan mekanisme pengendalian aliran.
+
+2. Jawablah kedua pertanyaan di atas untuk trace yang Anda dapatkan ketika Anda 
+mengirimkan file dari komputer ke gaia.cs.umass.edu.
+![hasil](../assests/image/Week6(17).png)
+
+    Pada bagian ini sama seperti step yang sudah pernah di lakukan yaitu upload file "alice.txt" ke web http://gaia.cs.umass.edu/wireshark-labs/TCP-wireshark-file1.html. 
+    
+    Berdasarkan grafik Time-Sequence (Stevens) dari proses upload file ke gaia.cs.umass.edu, terlihat bahwa tidak terdapat fase slow start yang jelas seperti pada teori TCP. Hal ini ditunjukkan oleh grafik yang relatif datar pada awal waktu, kemudian terjadi lonjakan sequence number secara tiba-tiba di akhir transmisi. Kondisi ini menunjukkan bahwa data tidak dikirim secara bertahap (eksponensial maupun linear), melainkan dalam jumlah kecil terlebih dahulu sebelum akhirnya dikirim sekaligus. Oleh karena itu, fase congestion avoidance juga tidak tampak secara signifikan. Perbedaan ini dapat disebabkan oleh ukuran file yang kecil atau mekanisme buffering pada aplikasi, sehingga perilaku TCP tidak sepenuhnya mengikuti pola ideal yang telah dipelajari.
+
 
