@@ -99,8 +99,7 @@ serverSocket.close()
 
 ## Output Simulasi TCP
 
-![hasil](../assests/image/Week7(3).png)
-
+![hasil](../assests/image/Week7(1).png)
 ## Alur TCP
 
 1. Server dijalankan & listen
